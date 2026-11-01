@@ -1,0 +1,10 @@
+[project]
+name = "nova-tools"
+version = "1.0.0"
+description = "Nova Tools – Windows için çevrimdışı masaüstü araç kutusu"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
