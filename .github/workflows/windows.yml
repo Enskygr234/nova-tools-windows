@@ -78,10 +78,11 @@ jobs:
           Copy-Item "dist\NovaTools.exe" "release\NovaTools-$env:APP_VERSION.exe"
           Copy-Item README.md, LICENSE "portable_dist\NovaTools\"
           Compress-Archive -Path "portable_dist\NovaTools" -DestinationPath "release\NovaTools-$env:APP_VERSION-Portable.zip"
-          Get-ChildItem release | ForEach-Object {
+          $sums = Get-ChildItem release -File | ForEach-Object {
             $h = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower()
             "$h  $($_.Name)"
-          } | Out-File release\SHA256SUMS.txt -Encoding ascii
+          }
+          $sums | Out-File release\SHA256SUMS.txt -Encoding ascii
           Get-ChildItem release | Format-Table Name, Length
           Get-Content release\SHA256SUMS.txt
 
