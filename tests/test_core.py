@@ -249,7 +249,7 @@ def test_storage_notes_settings_backup(tmp_path):
         db.backup_to(db.path)
 
     bad = tmp_path / "bozuk.db"
-    bad.write_text("sqlite değil")
+    bad.write_bytes("sqlite değil".encode("utf-8"))
     with pytest.raises(ValueError):
         Storage.validate_backup(str(bad))
     db.close()
