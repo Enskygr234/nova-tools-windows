@@ -19,6 +19,14 @@ modern bir Windows 10/11 uygulaması. İnternet, hesap, ücretli API veya yönet
 > Bu nedenle Windows SmartScreen ilk çalıştırmada "Windows bilgisayarınızı korudu" uyarısı gösterebilir:
 > **Ek bilgi → Yine de çalıştır** ile açabilirsiniz. Dosyanın bütünlüğünü `SHA256SUMS.txt` ile doğrulayabilirsiniz.
 
+## Ekran görüntüleri
+
+Derlenen EXE'nin CI'daki self-test çalışması sırasında gerçek Windows üzerinde alınır (`screenshots` dalı):
+
+![Ana ekran](https://raw.githubusercontent.com/Enskygr234/nova-tools-windows/screenshots/01_dashboard.png)
+
+<p><img src="https://raw.githubusercontent.com/Enskygr234/nova-tools-windows/screenshots/02_files.png" width="270" alt="files"> <img src="https://raw.githubusercontent.com/Enskygr234/nova-tools-windows/screenshots/03_text.png" width="270" alt="text"> <img src="https://raw.githubusercontent.com/Enskygr234/nova-tools-windows/screenshots/04_calc.png" width="270" alt="calc"> <img src="https://raw.githubusercontent.com/Enskygr234/nova-tools-windows/screenshots/05_time.png" width="270" alt="time"> <img src="https://raw.githubusercontent.com/Enskygr234/nova-tools-windows/screenshots/06_notes.png" width="270" alt="notes"> <img src="https://raw.githubusercontent.com/Enskygr234/nova-tools-windows/screenshots/07_settings.png" width="270" alt="settings"></p>
+
 ## Özellikler
 
 | Bölüm | Araçlar |
@@ -87,7 +95,10 @@ pyinstaller --noconfirm --onefile --windowed --name NovaTools --icon assets/icon
 2. Tek dosya EXE ve taşınabilir sürümü PyInstaller ile derler
 3. **Derlenen EXE'leri `--self-test` ile gerçekten açıp doğrular**
 4. EXE, Portable.zip ve SHA256SUMS dosyalarını artifact olarak yükler
-5. `v*` etiketiyle push edildiğinde bunları GitHub Releases'e ekler
+5. `VERSION` dosyasındaki sürüm henüz yayınlanmamışsa (veya `v*` etiketi gönderildiğinde) bunları GitHub Releases'e ekler
+6. EXE'nin çektiği sayfa görüntülerini `screenshots` dalına yayınlar
+
+Yeni sürüm için `VERSION`, `nova_tools/__init__.py` ve `version_info.txt` içindeki sürümü artırıp `main`'e gönderin.
 
 ## Proje yapısı
 
